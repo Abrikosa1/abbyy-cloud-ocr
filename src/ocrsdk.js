@@ -92,7 +92,6 @@ class Ocrsdk {
    * @param {function(error: Error, taskData: TaskData)} userCallback The callback function.
    */
   processImage(filePath, settings, userCallback) {
-    console.log(settings);
     let fileContents;
     if (typeof filePath === 'string') {
       fileContents = fs.readFileSync(filePath);
@@ -101,7 +100,7 @@ class Ocrsdk {
     // if (settings == null) {
     //   settings = new ProcessingSettings();
     // }
-    let urlOptions = settings.asUrlParams();
+    let urlOptions = new ProcessingSettings().asUrlParams();
     let req = this._createTaskRequest('POST', '/processImage' + urlOptions, userCallback);
 
     req.write(fileContents);
