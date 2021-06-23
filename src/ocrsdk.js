@@ -22,7 +22,7 @@ class ProcessingSettings {
    * @param {string} exportFormat Output format. One of: txt (default), rtf, docx, xlsx, pptx, pdfSearchable, pdfTextAndImages, xml.
    * @param {string} customOptions Other custom options passed to REST-ful call,  like 'profile=documentArchiving' (optional)
    */
-  constructor(language="EnglishRussian", exportFormat = "txtUnstructured,txt", customOptions="") {
+  constructor(language="English,Russian", exportFormat = "txtUnstructured,txt", customOptions="") {
     this.language = language;
     this.exportFormat = exportFormat;
     this.customOptions = customOptions;
@@ -92,17 +92,17 @@ class Ocrsdk {
    * @param {function(error: Error, taskData: TaskData)} userCallback The callback function.
    */
   processImage(filePath, settings, userCallback) {
-    
+    console.log(settings);
     let fileContents;
     if (typeof filePath === 'string') {
       fileContents = fs.readFileSync(filePath);
     }
     else fileContents = filePath;
-    if (settings == null) {
-      settings = new ProcessingSettings();
-    }
-    // let urlOptions = settings.asUrlParams();
-    let req = this._createTaskRequest('POST', '/processImage', userCallback);
+    // if (settings == null) {
+    //   settings = new ProcessingSettings();
+    // }
+    let urlOptions = settings.asUrlParams();
+    let req = this._createTaskRequest('POST', '/processImage' + urlOptions, userCallback);
 
     req.write(fileContents);
     req.end();
@@ -270,5 +270,3 @@ module.exports = {
   TaskData,
   ProcessingSettings
 }
-
-
