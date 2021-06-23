@@ -29,7 +29,7 @@ const Gauge = require('gauge');
     .option("-c, --custom-options <options>", "Other custom options passed to REST-ful call,  like 'profile=documentArchiving'")
     .option("-o, --output-path <path>", "The path to which to save the processed files")
     .option("-F, --filenames", "Output the filenames of the processed and downloaded files")
-    .action(processFiles);
+    // .action(processFiles);
 
   // list
   program
@@ -69,17 +69,17 @@ const Gauge = require('gauge');
    * @param files
    * @param options
    */
-  async function processFiles(files : string[], options: OptionsType) : Promise<void>{
-    const ocr = createClient(options);
-    const settings = new ProcessingSettings(options.language, options.exportFormat, options.customOptions);
-    for (let filePath of files) {
-      options.filenames || console.log("Processing " + filePath);
-      await ocr.process(filePath, settings);
-      for await (const processedFilePath of ocr.downloadResult(options.outputPath) ) {
-        console.info( (options.filenames ? "" : "Downloaded ") + processedFilePath);
-      }
-    }
-  }
+  // async function processFiles(files : string[], options: OptionsType) : Promise<void>{
+  //   const ocr = createClient(options);
+  //   const settings = new ProcessingSettings(options.language, options.exportFormat, options.customOptions);
+  //   for (let filePath of files) {
+  //     options.filenames || console.log("Processing " + filePath);
+  //     await ocr.process(filePath, settings);
+  //     for await (const processedFilePath of ocr.downloadResult(options.outputPath) ) {
+  //       console.info( (options.filenames ? "" : "Downloaded ") + processedFilePath);
+  //     }
+  //   }
+  // }
 
   /**
    * List ongoing and/or completed tasks

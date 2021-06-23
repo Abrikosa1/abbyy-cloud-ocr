@@ -82,7 +82,7 @@ class AbbyyOcr {
      * @param {String | Buffer} filePath
      */
     async process(filePath, settings) {
-        this.settings = new ProcessingSettings();
+        this.settings = new ProcessingSettings(settings.language, settings.exportFormat, settings.customOptions);
         // this.fileName = path.basename(filePath);
         // this.emitter.emit(AbbyyOcr.event.uploading, this.fileName);
         let taskData = await new Promise(((resolve, reject) => {
