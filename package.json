@@ -25,7 +25,8 @@
     "package.json",
     "tsconfig.json",
     "run.ts",
-    ".env.dist"
+    ".env.dist",
+    "src/ocrsdk.js"
   ],
   "author": "Christian Boulanger (@cboulanger) infoy@bibliograph.org",
   "license": "ISC",
