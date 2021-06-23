@@ -7,3 +7,4 @@ run.js
 !.env.dist
 bin/
 .pkg-cache/
+package-lock.json
