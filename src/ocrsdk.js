@@ -22,7 +22,7 @@ class ProcessingSettings {
    * @param {string} exportFormat Output format. One of: txt (default), rtf, docx, xlsx, pptx, pdfSearchable, pdfTextAndImages, xml.
    * @param {string} customOptions Other custom options passed to REST-ful call,  like 'profile=documentArchiving' (optional)
    */
-  constructor(language="English", exportFormat = "txt", customOptions="") {
+  constructor(language="EnglishRussian", exportFormat = "txtUnstructured,txt", customOptions="") {
     this.language = language;
     this.exportFormat = exportFormat;
     this.customOptions = customOptions;
@@ -101,8 +101,8 @@ class Ocrsdk {
     if (settings == null) {
       settings = new ProcessingSettings();
     }
-    let urlOptions = settings.asUrlParams();
-    let req = this._createTaskRequest('POST', '/processImage' + urlOptions, userCallback);
+    // let urlOptions = settings.asUrlParams();
+    let req = this._createTaskRequest('POST', '/processImage', userCallback);
 
     req.write(fileContents);
     req.end();
