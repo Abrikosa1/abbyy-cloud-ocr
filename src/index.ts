@@ -143,7 +143,7 @@ export class AbbyyOcr {
    * Uploads a document to the Abbyy OCR service and processes them.
    * @param {String | Buffer} filePath
    */
-  async process(filePath: string, settings?: typeof ProcessingSettings): Promise<void> {
+  async process(filePath: string | Buffer, settings?: typeof ProcessingSettings): Promise<void> {
     this.settings = settings || new ProcessingSettings();
     // this.fileName = path.basename(filePath);
     // this.emitter.emit(AbbyyOcr.event.uploading, this.fileName);
