@@ -1,6 +1,6 @@
 {
   "name": "abbyy-ocr-ts",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "NodeJS client and CLI to interact with the ABBYY Cloud OCR service  ",
   "main": "src/index.js",
   "bin": "run.js",
