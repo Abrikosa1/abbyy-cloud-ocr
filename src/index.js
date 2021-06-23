@@ -82,11 +82,11 @@ class AbbyyOcr {
      * @param {String | Buffer} filePath
      */
     async process(filePath, settings) {
-        this.settings = settings || new ProcessingSettings();
+        this.settings = new ProcessingSettings();
         // this.fileName = path.basename(filePath);
         // this.emitter.emit(AbbyyOcr.event.uploading, this.fileName);
         let taskData = await new Promise(((resolve, reject) => {
-            this.ocrsdk.processImage(filePath, new ProcessingSettings(), (error, taskData) => {
+            this.ocrsdk.processImage(filePath, this.settings, (error, taskData) => {
                 if (error) {
                     reject(error);
                 }
